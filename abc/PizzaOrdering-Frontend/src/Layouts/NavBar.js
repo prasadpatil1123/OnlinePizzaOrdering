@@ -10,9 +10,11 @@ import {
     MDBNavbarBrand,
     MDBCollapse
 } from 'mdb-react-ui-kit';
+import Login from '../Pages/Login';
 
 
 import { MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem } from 'mdb-react-ui-kit';
+
 
 import logo from '../Assets/HomePizzaLogo.gif';
 // import Login from '../Pages/Login';
@@ -22,7 +24,7 @@ const NavBar = () => {
     const [showNavColor, setShowNavColor] = useState(false);
 
     return (
-        <MDBNavbar expand="lg" dark bgColor="primary">
+        <MDBNavbar expand="lg" dark bgColor="dark">
             <MDBContainer fluid>
                 <MDBNavbarBrand href="/">
                     <img src={logo} alt="Logo" /> PIZZA ITALIA
@@ -54,6 +56,11 @@ const NavBar = () => {
                                 Contact Us
                             </MDBNavbarLink>
                         </MDBNavbarItem>
+                        <MDBNavbarItem>
+                            <MDBNavbarLink href="http://localhost:3000/menu">
+                                Menu
+                            </MDBNavbarLink>
+                        </MDBNavbarItem>
                         <div className="dropdown" style={{ marginLeft: '10px' }}>
                             <button
                                 className="btn btn-secondary dropdown-toggle"
@@ -82,7 +89,7 @@ const NavBar = () => {
                     </MDBNavbarNav>
 
                     {/* Cart button */}
-                    <a href="http://localhost:3000/cart" className="btn btn-secondary">
+                    <a href="http://localhost:3000/cart" className="btn btn-secondary" style={{marginRight:"12px" }}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -97,14 +104,14 @@ const NavBar = () => {
 
                     {/* Profile button */}
                     <MDBDropdown>
-                        <MDBDropdownToggle tag='a' className='btn btn-primary'>
+                        <MDBDropdownToggle tag='a' className='btn btn-primary' style={{backgroundColor:"ThreeDDarkShadow", color:"white"}}>
                             Profile
                         </MDBDropdownToggle>
                         <MDBDropdownMenu>
                             <MDBDropdownItem link>Profile</MDBDropdownItem>
                             <MDBDropdownItem link>My Orders</MDBDropdownItem>
                             <MDBDropdownItem link>My Reviews</MDBDropdownItem>
-                            <MDBDropdownItem link='http://localhost:3000/login' >Login/Logout</MDBDropdownItem>
+                            <MDBDropdownItem link href='http://localhost:3000/login' >Login/Logout</MDBDropdownItem>
 
                         </MDBDropdownMenu>
                     </MDBDropdown>

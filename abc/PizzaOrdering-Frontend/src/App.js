@@ -7,34 +7,37 @@ import AboutUs from "./Pages/AboutUs";
 import ContactUs from "./Pages/ContactUs";
 import HomePage from "./Pages/HomePage";
 import Footer from "./Layouts/Footer";
-// import Login from "./Pages/Login";
-// import Register from "./Pages/Register";
+import Login from "./Pages/Login";
+import Register from "./Pages/Register";
+import Menu from "./Pages/Menu";
 
 
 function App() {
- 
+
 
   return (
     <>
-    
-    <div>
-      <NavBar/>
-    </div>
 
-    <div>
-      <Router>
-        <Routes>
-        <Route path="/" element={<HomePage />} />
-          <Route path="/aboutus" element={<AboutUs />} />
-          <Route path="/contactus" element={<ContactUs />} />
-          {/* <Route path="/login" element={<AboutUs />} />
-          <Route path="/register" element={<Register />} /> */}
-        </Routes>
-      </Router>
-    </div>
-    <div>
-      <Footer/>
-    </div>
+      <div>
+        <NavBar />
+      </div>
+
+      <div>
+        <Router>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/aboutus" element={<AboutUs />} />
+            <Route path="/contactus" element={<ContactUs />} />
+            <Route path="/menu" element={<Menu />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            {/* <Route path="*" element={<Pagenotfound />} /> */}
+          </Routes>
+        </Router>
+      </div>
+      <div>
+        <Footer />
+      </div>
     </>
   );
 }
