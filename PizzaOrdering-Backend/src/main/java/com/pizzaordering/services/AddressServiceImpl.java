@@ -1,81 +1,80 @@
-package com.pizzaordering.services;
+//Address Service Implementation
+
+package com.pizzaOrdering.services;
 
 import java.util.List;
-
 import java.util.Optional;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.pizzaordering.dao.AddressDao;
-import com.pizzaordering.dao.UsersDao;
-import com.pizzaordering.model.Address;
-//import com.pizzaordering.model.Users;
+import com.pizzaOrdering.dao.AddressDao;
+import com.pizzaOrdering.model.Address;
+
+
 
 @Service
 @Transactional
 public class AddressServiceImpl implements AddressService {
 
-
 	@Autowired
-	AddressDao addressDao; 
+	AddressDao addressDao;
 	
-	@Autowired
-	UsersDao usersDao;
-	
-	//Adding address................................
-	@Override
+	//Adding address-----------------------------------
 	public Address addAddress(Address address) {
 		addressDao.save(address);
 		return address;
 	}
 	
-	//Finding all address ...............
-	@Override
+	
+	//find all Addresses--------------------------------
 	public List<Address> findAllAddress() {
-		return addressDao.findAll();
+		return addressDao.findAll();		
 	}
 	
-	//Getting address by users id.......
-	@Override
+	//getting address by user id------------------------
 	public List<Address> getAddressByUsers(long id) {
-		return addressDao.findByUsersId(id).orElseThrow(()-> new RuntimeException("Address Not Found!"));
+		return addressDao.findByUsersId(id);
 	}
 	
-	//Deleting address by id.................... 
+	//getting address by id-----------------------------
 	@Override
-	public void deleteAddresssById(long id) {
-	  addressDao.deleteById(id);
-	 
-	}
-	//Finding users address by user id
-	@Override
-	public Optional<Address> findByUsersId(long id) {
-//		return null;
-			return	addressDao.findById(id);
-	}
-	
-	
-	
-	@Override
-	public Optional<Address> addressById(long id) {
+	public Optional<Address> addressByID(long id) {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return addressDao.findById(id);
 	}
 
-	//Editing address................................
+	
+	//Deleting Address----------------------------------
 	@Override
-	public Address editUsersAddress(Address address) {
-		Address foundUserAddress = addressDao.findById(address.getId()).orElseThrow(()->new RuntimeException("Address not Found"));
-		foundUserAddress.setHouseNo(address.getHouseNo());
-		foundUserAddress.setCity(address.getCity());
-		foundUserAddress.setCountry(address.getCountry());
-		foundUserAddress.setId(address.getId());
-		foundUserAddress.setPincode(address.getPincode());
-		foundUserAddress.setState(address.getState());
+	public void deleteAddressById(long id) {
+		addressDao.deleteById(id);
+
+	}
+
+
+	@Override
+	public List<Address> findByUsersId(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	
+	public Address editUsersAddress(Address address){
+		Address foundUserAddress=addressDao.findById(address.getId()).orElseThrow(()->new RuntimeException("Address not found!!"));
+		
+		foundUserAddress.setHouse_no(address.getHouse_no());
 		foundUserAddress.setStreet(address.getStreet());
+		foundUserAddress.setCity(address.getCity());
+		foundUserAddress.setState(address.getState());
+		foundUserAddress.setCountry(address.getCountry());
+		foundUserAddress.setPincode(address.getPincode());
 		return addressDao.save(foundUserAddress);
 		
 	}
+
+
 }

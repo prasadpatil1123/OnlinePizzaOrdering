@@ -1,4 +1,4 @@
-package com.pizzaordering.model;
+package com.pizzaOrdering.model;
 
 import java.util.Date;
 
@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
 @Entity
 @Table(name = "offers")
 @Getter
@@ -19,16 +20,18 @@ import lombok.ToString;
 @NoArgsConstructor
 public class Offer extends BaseEntity {
 
+private String name;
+	
 	private int discount;
-
-	private Date validForm;
-
-	private Date validUpto;
-
+	
+	private Date valid_from;
+	
+	private Date valid_upto;
+	
+	
 	@Column(length = 50, unique = true)
 	private String code;
-
+	
 	@Column(length = 1000)
-	private String termsCondition;
-
+	private String terms_conditions;
 }

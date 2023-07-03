@@ -1,40 +1,41 @@
-package com.pizzaordering.services;
+package com.pizzaOrdering.services;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
+import com.pizzaOrdering.model.CartItem;
+import com.pizzaOrdering.model.Order;
+import com.pizzaOrdering.model.ShoppingCart;
+import com.pizzaOrdering.model.Users;
 
-import com.pizzaordering.model.CartItem;
-import com.pizzaordering.model.Order;
-import com.pizzaordering.model.ShoppingCart;
-
-@Service
 public interface ShoppingCartService {
 
-	// ShoppingCart-----------------------------------------------------
+//ShoppingCart-----------------------------------------------------
 
-	// add to cart
+	//addCartToUser => when user create an account single Cart will be automatically added to his account then he can do CRUD ops.
+//	public ShoppingCart addCartToUser(Users users); //this method is added in userServiceImpl
+//	
+	//add to cart
 	public ShoppingCart addToCart(long user_id, long pizza_id);
-
-	// update cart
+	
+	//update cart
 	public ShoppingCart updateCart(ShoppingCart cart);
+	
+	//delete from cart
+	public ShoppingCart removeFromCart(long user_id,long pizza_id);
+	
+	//get cart by user_id
+	public ShoppingCart getCartByUserID(long user_id) ;
+	
+	//checkout for payment
+	public Order checkout(long user_id, long address_id,String paymentType, 
+			double discount, double deliveryPrice, double taxAmount);
+	
+//Cart Item--------------------------------------------------------------------------------
 
-	// delete from cart
-	public ShoppingCart removeFromCart(long user_id, long pizza_id);
-
-	// get cart by user_id
-	public ShoppingCart getCartByUserId(long user_id);
-
-	// Order--------------------------------------------------------------------------------
-
-	// checkout for payment
-	public Order checkout(long user_id, long address_id, String paymentType, double discount, double deliveryPrice,
-			double taxAmount);
-
-	// Cart
-	// Item--------------------------------------------------------------------------------
-	// delete cartItem
-	public void deleteCartItemById(long id);
-
+		//delete cartItem
+	public void deleteCartItemByID(long id);
+		
 	public List<CartItem> getCartItemByCartId(long cart_id);
+	
+	
 }

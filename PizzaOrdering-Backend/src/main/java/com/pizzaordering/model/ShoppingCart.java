@@ -1,5 +1,7 @@
-package com.pizzaordering.model;
+package com.pizzaOrdering.model;
 
+
+//1st ShoppingCart then CartItem
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -9,6 +11,8 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
+
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,26 +24,26 @@ import lombok.ToString;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = {"cartOwner"})
+@ToString
 @Entity
-public class ShoppingCart extends BaseEntity {
-
-	// totalItems,totalCartPrice,createdOn,updatedOn
-
+public class ShoppingCart extends BaseEntity{
+	//totalItems,totalCartPrice,createdOn,updatedOn
+	
+	
 	@Column(name = "total_items")
 	private int totalItems;
-
+	
 	@Column(name = "total_cart_price")
 	private double totalCartPrice;
-
+	
 	@CreationTimestamp // hib annotation to add creation date auto : once @ time of saving the entity
 	@Column(name = "created_on")
 	private LocalDate createdOn;
-
+	
 	@UpdateTimestamp // hib annotation to update the date auto : @ time of updating cart
 	@Column(name = "last_updated_on")
 	private LocalDate lastUpdatedOn;
-
+	
 	// Cart HAS-A Customer Cart ----> User
 	// Cart : one , child , owning
 	@OneToOne // def fetch type : EAGER

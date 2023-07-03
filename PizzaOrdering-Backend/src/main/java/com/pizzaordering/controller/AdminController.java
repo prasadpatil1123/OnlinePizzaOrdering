@@ -1,10 +1,10 @@
-package com.pizzaordering.controller;
+package com.pizzaOrdering.controller;
 
 import java.util.List;
-
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,14 +13,19 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pizzaordering.model.*;
+import com.pizzaOrdering.model.Category;
+import com.pizzaOrdering.model.Offer;
+import com.pizzaOrdering.model.Order;
+import com.pizzaOrdering.model.Pizza;
+import com.pizzaOrdering.model.Review;
+import com.pizzaOrdering.services.CategoryService;
+import com.pizzaOrdering.services.OfferService;
+import com.pizzaOrdering.services.OrderService;
+import com.pizzaOrdering.services.PizzaService;
+import com.pizzaOrdering.services.ReviewService;
 
-import com.pizzaordering.services.*;
-
-//import com.pizzaordering.dao.*;
-
+@CrossOrigin("http://localhost:3000")
 @RestController
-//@CrossOrigin("")
 public class AdminController {
 
 	@Autowired
@@ -39,7 +44,6 @@ public class AdminController {
 	@Autowired 
 	OrderService orderService;
 	
-	
 //Category added by admin---------------------------------------------------------------------------------------------------
 	
 	//add category
@@ -53,7 +57,7 @@ public class AdminController {
 	@PutMapping("/editcategory")
 	public Category updateCategory(@RequestBody Category category) {
 		System.out.println(category);
-		return this.categoryService.editCategoryById(category);
+		return this.categoryService.editCategoryByID(category);
 	}
 	
 	
@@ -61,7 +65,7 @@ public class AdminController {
 	@GetMapping("/category/id/{id}")
 	public Optional<Category> getCategoryById(@PathVariable long id){
 		System.out.println("in fetch Category of user  " + id);
-		return categoryService.findCategoryById(id);
+		return categoryService.findCategoryByID(id);
 	}
 	
 	//get all categories
@@ -73,7 +77,7 @@ public class AdminController {
 	//delete category by id
 	@DeleteMapping("/category/id/{id}")
 	public  void deleteCategoryById(@PathVariable long id) {
-		categoryService.deleteCategoryById(id);
+		categoryService.deleteCategoryByID(id);
 	}
 	
 	
@@ -95,7 +99,7 @@ public class AdminController {
 	//delete pizza by admin which admin has added
 	@DeleteMapping("/deletepizza/id/{id}")
 	public void removePizzaById(@PathVariable long id) {
-		pizzaService.deletePizzaById(id);
+		pizzaService.deletePizzaByID(id);
 	}
 	
 	
@@ -180,5 +184,17 @@ public class AdminController {
 	public List<Review> getAllReviews(){
 		return reviewService.findAllReviews();
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

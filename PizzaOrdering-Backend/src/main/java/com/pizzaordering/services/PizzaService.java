@@ -1,25 +1,25 @@
-package com.pizzaordering.services;
+package com.pizzaOrdering.services;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.pizzaordering.model.Pizza;
+import com.pizzaOrdering.model.Pizza;
 
 public interface PizzaService {
 
 	
 	public Pizza addPizza(Pizza pizza); //add
 	
-	public void deletePizzaById(Long Id); //delete
+	public void deletePizzaByID(Long Id); //delete
 	
 	public Pizza updatePizza(Pizza pizza);
 	
 	public List<Pizza> findAllPizza(); //findPizza
 	
-	public Optional<Pizza> PizzaById(Long id);
+	public Optional<Pizza> PizzaByID(Long id);
 	
-	public List<Pizza> findByCategoryId(long cat_id);
+	public List<Pizza> findByCategoryID(long cat_id);
 	
-	public Pizza getById(Long id);
+	public Pizza getByID(Long id);
 
 }

@@ -1,4 +1,4 @@
-package com.pizzaordering.model;
+package com.pizzaOrdering.model;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,15 +11,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@MappedSuperclass
+@MappedSuperclass //Designates a class whose mapping information is appliedto the entities that inherit from it. A mapped superclasshas no separate table defined for it. 
+
 @Setter
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@ToString
 public class BaseEntity {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)  		//to generate automatic unique Id
+	private Long id;  											//id => common for all implementation
 }

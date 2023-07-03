@@ -1,4 +1,5 @@
-package com.pizzaordering.model;
+package com.pizzaOrdering.model;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;

@@ -1,12 +1,12 @@
-package com.pizzaordering.dao;
+package com.pizzaOrdering.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-//import org.springframework.stereotype.Repository;
+import com.pizzaOrdering.model.Category;
 
-import com.pizzaordering.model.Category;
+@Repository
+public interface CategoryDao extends JpaRepository<Category, Long>{
 
-//@Repository
-public interface CategoryDao extends JpaRepository<Category, Long> {
 
 }

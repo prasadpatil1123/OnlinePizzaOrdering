@@ -1,13 +1,10 @@
-package com.pizzaordering.services;
+package com.pizzaOrdering.services;
 
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.stereotype.Service;
+import com.pizzaOrdering.model.Review;
 
-import com.pizzaordering.model.Review;
-
-@Service
 public interface ReviewService {
 
 	//add reviews
